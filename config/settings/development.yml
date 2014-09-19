@@ -1,0 +1,3 @@
+site:
+  host: "localhost"
+  fqdn: "localhost:3000"
