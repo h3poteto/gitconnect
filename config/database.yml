@@ -13,20 +13,20 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
+  username: <%= ENV["DB_USERNAME"] || "root" %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  socket: <%= ENV["DB_SOCKET"] %>
 
 development:
   <<: *default
-  database: gitconnect_development
+  database: <%= ENV["DB_GITCONNECT_DEVELOPMENT"] || "gitconnect_development" %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: gitconnect_test
+  database: <%= ENV["DB_GITCONNECT_TEST"] || "gitconnect_test" %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: gitconnect_production
-  username: gitconnect
-  password: <%= ENV['GITCONNECT_DATABASE_PASSWORD'] %>
+  database: <%= ENV["DB_GITCONNECT_PRODUCTION"] || "gitconnect_production" %>
+  username: <%= ENV["DB_USERNAME"] || "gitconnect" %>
+  password: <%= ENV["DB_PASSWORD"] %>
