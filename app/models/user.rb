@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+
+  has_one :applicant
+
   def self.create_unique_string
     SecureRandom.uuid
   end
@@ -18,6 +21,7 @@ class User < ActiveRecord::Base
         name: auth.info.nickname,
         provider: auth.provider,
         uid: auth.uid,
+        access_token: auth.credentials.token,
         email: User.create_unique_email,
         password: Devise.friendly_token[0,20]
       )

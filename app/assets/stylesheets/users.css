@@ -12,5 +12,6 @@
  *
  *= require bootstrap_and_overrides
  *= require_tree ./users
+ *= require sprockets-octicons
  *= require_self
  */
