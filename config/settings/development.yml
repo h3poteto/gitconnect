@@ -1,3 +1,3 @@
 site:
-  host: "localhost"
-  fqdn: "localhost:3000"
+  host: "gitconnect.localhost"
+  fqdn: "gitconnect.localhost:3000"
