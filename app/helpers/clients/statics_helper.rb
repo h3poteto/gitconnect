@@ -1,0 +1,2 @@
+module Clients::StaticsHelper
+end
