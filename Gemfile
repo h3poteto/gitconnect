@@ -25,6 +25,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'octokit'
+gem 'ransack'
 
 group :development, :test do
   gem 'debugger2', :git => 'git://github.com/ko1/debugger2.git'

@@ -12,5 +12,10 @@ Rails.application.routes.draw do
 
   namespace :clients do
     resources :statics, only: :index
+    resources :users, only: [:index, :show] do
+      collection do
+        get :search
+      end
+    end
   end
 end
