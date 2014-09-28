@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   devise_for :clients
   devise_for :users, :controllers => {
     :omniauth_callbacks => "users/omniauth_callbacks"
@@ -17,5 +18,9 @@ Rails.application.routes.draw do
         get :search
       end
     end
+  end
+
+  namespace :admins do
+    resources :statics, only: :index
   end
 end

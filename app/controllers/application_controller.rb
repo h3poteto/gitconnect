@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
       users_dashboards_path
     when Client
       clients_statics_path
+    when Admin
+      admins_statics_path
     end
   end
   def after_sign_out_path_for(resource)
