@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :accounts, :controllers => {
+    :omniauth_callbacks => "accounts/omniauth_callbacks"
+  }
   devise_for :admins
   devise_for :clients
-  devise_for :users, :controllers => {
-    :omniauth_callbacks => "users/omniauth_callbacks"
-  }
+  devise_for :users
+
+
   root to: "statics#index"
 
   resources :statics, only: :index

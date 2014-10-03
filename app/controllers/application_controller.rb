@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     case resource
-    when User
+    when Account
       users_dashboards_path
     when Client
       clients_statics_path

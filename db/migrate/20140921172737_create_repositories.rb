@@ -1,7 +1,7 @@
 class CreateRepositories < ActiveRecord::Migration
   def change
     create_table :repositories do |t|
-      t.integer :applicant_id
+      t.integer :account_id
       t.integer :language_id
       t.string :name, null: false
       t.string :full_name, null: false
