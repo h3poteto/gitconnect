@@ -15,9 +15,17 @@ class Clients::UsersController < ClientsController
     @users = []
     @params = {}
     if params[:search].present?
-      @users = User.search(account_repositories_language_id_eq: params[:search][:language_id]).result
+      @repos = Repository.where(language_id: params[:search][:language_id])
+      term = Experience.find(params[:search][:experience_id].to_i).min_year
+      @repos.each do |repo|
+        if repo.pushed_at - term.year > repo.first_created && repo.account.user.present?
+          @users.push(repo.account.user)
+        end
+      end
       @users.uniq!
-      @params.store(:language_id, params[:search][:language_id])
+      params[:search].each do |key, val|
+        @params.store(key, val)
+      end
     end
   end
 end

@@ -6,6 +6,8 @@ class Account < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :repositories
+  has_one :client
+  has_one :user
 
   def self.create_unique_string
     SecureRandom.uuid

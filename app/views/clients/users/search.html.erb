@@ -1,11 +1,12 @@
 <%= form_tag(search_clients_users_path, method: :get, class: "form-inline") do %>
   <div class="form-group">
     <%= label :search, :language_id, "言語", class: "control-label" %>
-    <%= collection_select :search, :language_id, Language.all, :id, :name, {prompt: "選択してください", selected: @params[:language_id]}, class: "form-control" %>
+    <%= collection_select :search, :language_id, Language.all, :id, :name, {prompt: "選択してください", selected: @params["language_id"]}, class: "form-control" %>
+    <%= collection_select :search, :experience_id, Experience.all, :id, :term, {selected: @params["experience_id"]}, class: "form-control" %>
   </div>
   <%= submit_tag "検索", class: "btn btn-default" %>
 <% end %>
-
+<br />
 <table class="table table-striped">
   <tr>
     <th>ユーザ名</th>
@@ -15,7 +16,7 @@
   <% @users.each do |user| %>
     <tr>
       <td><%= link_to user.account.name, clients_user_path(user) %></td>
-      <td><%= user.account.repositories.map{|r| r if r.language_id == @params[:language_id].to_i}.compact!.count %></td>
+      <td><%= user.account.repositories.map{|r| r if r.language_id == @params["language_id"].to_i}.compact!.count %></td>
       <td><%= user.account.repositories.count %></td>
     </tr>
   <% end %>

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :statics, only: :index
   namespace :users do
-    resources :dashboards, only: :index
+    resources :statics, only: :index
     resources :clients, only: [:index, :show] do
       collection do
         get :search
