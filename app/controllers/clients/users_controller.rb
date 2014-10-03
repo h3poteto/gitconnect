@@ -8,15 +8,15 @@ class Clients::UsersController < ClientsController
   # GET /clients/users/1
   # GET /clients/users/1.json
   def show
-    @applicant = Applicant.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def search
-    @applicants = []
+    @users = []
     @params = {}
     if params[:search].present?
-      @applicants = Applicant.search(repositories_language_id_eq: params[:search][:language_id]).result
-      @applicants.uniq!
+      @users = User.search(account_repositories_language_id_eq: params[:search][:language_id]).result
+      @users.uniq!
       @params.store(:language_id, params[:search][:language_id])
     end
   end

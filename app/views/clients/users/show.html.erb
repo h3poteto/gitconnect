@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= @applicant.user.name %>
+<%= @user.account.name %>
 
 <table class="table">
   <tr>
@@ -8,7 +8,7 @@
     <th>言語</th>
     <th>URL</th>
   </tr>
-  <% @applicant.repositories.each do |repo| %>
+  <% @user.account.repositories.each do |repo| %>
     <tr>
       <td><%= repo.name %></td>
       <td><%= repo.language.name rescue "不明" %></td>

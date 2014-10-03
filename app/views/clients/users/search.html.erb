@@ -12,11 +12,11 @@
     <th><%= Language.find(@params[:language_id].to_i).name rescue "" %>リポジトリ数</th>
     <th>総リポジトリ数</th>
   </tr>
-  <% @applicants.each do |applicant| %>
+  <% @users.each do |user| %>
     <tr>
-      <td><%= link_to applicant.user.name, clients_user_path(applicant) %></td>
-      <td><%= applicant.repositories.map{|r| r if r.language_id == @params[:language_id].to_i}.compact!.count %></td>
-      <td><%= applicant.repositories.count %></td>
+      <td><%= link_to user.account.name, clients_user_path(user) %></td>
+      <td><%= user.account.repositories.map{|r| r if r.language_id == @params[:language_id].to_i}.compact!.count %></td>
+      <td><%= user.account.repositories.count %></td>
     </tr>
   <% end %>
 </table>

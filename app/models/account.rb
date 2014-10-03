@@ -62,6 +62,7 @@ class Account < ActiveRecord::Base
         repository.language = language
         repository.save
         account.save
+        user.save
       end
 
     end
