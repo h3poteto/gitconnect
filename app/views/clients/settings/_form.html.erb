@@ -9,3 +9,7 @@
     <%= f.button :submit, "更新" %>
   </div>
 <% end %>
+
+<%= link_to account_omniauth_authorize_path(:github) do %>
+  <span class="octicon octicon-mark-github btn btn-success"> Sign in with github</span>
+<% end %>
