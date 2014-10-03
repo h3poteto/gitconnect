@@ -1,0 +1,22 @@
+<%= form_tag(search_users_clients_path, method: :get, class: "form-inline") do %>
+  <div class="form-group">
+    <%= label :search, :language_id, "言語", class: "control-label" %>
+    <%= collection_select :search, :language_id, Language.all, :id, :name, {prompt: "選択してください", selected: @params[:language_id]}, class: "form-control" %>
+  </div>
+  <%= submit_tag "検索", class: "btn btn-default" %>
+<% end %>
+
+<table class="table table-striped">
+  <tr>
+    <th>会社名</th>
+    <th><%= Language.find(@params[:language_id].to_i).name rescue "" %>リポジトリ数</th>
+    <th>総リポジトリ数</th>
+  </tr>
+  <% @clients.each do |client| %>
+    <tr>
+      <td><%= link_to client.account.name, users_client_path(client) %></td>
+      <td><%= client.account.repositories.map{|r| r if r.language_id == @params[:language_id].to_i}.compact!.count %></td>
+      <td><%= client.account.repositories.count %></td>
+    </tr>
+  <% end %>
+</table>

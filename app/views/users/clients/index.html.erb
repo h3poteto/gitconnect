@@ -1,0 +1,23 @@
+<h1>Listing users_clients</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users_clients.each do |users_client| %>
+      <tr>
+        <td><%= link_to 'Show', users_client %></td>
+        <td><%= link_to 'Edit', edit_users_client_path(users_client) %></td>
+        <td><%= link_to 'Destroy', users_client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Client', new_users_client_path %>
