@@ -18,7 +18,7 @@ class Clients::UsersController < ClientsController
       @repos = Repository.where(language_id: params[:search][:language_id])
       term = Experience.find(params[:search][:experience_id].to_i).min_year
       @repos.each do |repo|
-        if repo.pushed_at - term.year > repo.first_created
+        if Time.current - term.year > repo.first_commited_at
           repo.accounts.each do |account|
             @users.push(account.user) if account.user.present?
           end
