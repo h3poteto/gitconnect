@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141003171720) do
+ActiveRecord::Schema.define(version: 20141009085729) do
+
+  create_table "account_repositories", force: true do |t|
+    t.integer  "account_id"
+    t.integer  "repository_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "accounts", force: true do |t|
-    t.string   "type"
     t.string   "email",                  default: "", null: false
     t.string   "uid",                    default: "", null: false
     t.string   "provider",               default: "", null: false
@@ -88,22 +94,23 @@ ActiveRecord::Schema.define(version: 20141003171720) do
   end
 
   create_table "repositories", force: true do |t|
-    t.integer  "account_id"
+    t.integer  "github_repository_id", null: false
     t.integer  "language_id"
-    t.string   "name",          null: false
-    t.string   "full_name",     null: false
+    t.string   "name",                 null: false
+    t.string   "full_name",            null: false
     t.string   "owner_name"
     t.integer  "owner_id"
     t.string   "owner_url"
     t.boolean  "private"
     t.string   "html_url"
     t.boolean  "fork"
-    t.datetime "first_created", null: false
-    t.datetime "last_updated",  null: false
+    t.datetime "first_created",        null: false
+    t.datetime "last_updated",         null: false
+    t.datetime "first_commited_at"
     t.datetime "pushed_at"
     t.integer  "forks_count"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "users", force: true do |t|

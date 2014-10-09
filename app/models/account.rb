@@ -5,7 +5,8 @@ class Account < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  has_many :repositories
+  has_many :account_repositories
+  has_many :repositories, through: :account_repositories
   has_one :client
   has_one :user
 
@@ -62,14 +63,51 @@ class Account < ActiveRecord::Base
 
   def self.update_repositories(application, account)
     application.repos.each do |repo|
+      repository = Repository.where(github_repository_id: repo.id.to_i).first
+      if repository.blank?
+        repository = self.create_repository(repo, account)
+        ## 初回のみfirst commitを調べる必要がある
+        page = 1
+        first_commit = nil
+        first = application.list_commits(repo.full_name).last
+
+        while first.present?
+          page += 1
+          first_commit = first
+          first = application.list_commits(repo.full_name, page: page).last rescue nil
+        end
+        repository.update(first_commited_at: first_commit.commit.committer.date)
+      else
+        ## collaboratorとして追加されていたらaccountと紐付け
+        repository.accounts << account unless repository.accounts.include?(account)
+        repository.update(
+          name: repo.name,
+          full_name: repo.full_name,
+          owner_name: repo.owner.login,
+          owner_id: repo.owner.id,
+          owner_url: repo.owner.html_url,
+          private: repo.private,
+          html_url: repo.html_url,
+          fork: repo.fork,
+          last_updated: repo.updated_at,
+          pushed_at: repo.pushed_at,
+          forks_count: repo.forks_count
+          )
+      end
+    end
+  end
+
+
+  private
+    def self.create_repository(repo, account)
       language = Language.where(name: repo.language).first
       unless language
         language = Language.create(
           name: repo.language
           ) if repo.language.present?
       end
-
       repository = Repository.new(
+        github_repository_id: repo.id.to_i,
         name: repo.name,
         full_name: repo.full_name,
         owner_name: repo.owner.login,
@@ -83,9 +121,10 @@ class Account < ActiveRecord::Base
         pushed_at: repo.pushed_at,
         forks_count: repo.forks_count
         )
-      repository.account = account
+
+      repository.accounts << account
       repository.language = language
       repository.save
+      return repository
     end
-  end
 end

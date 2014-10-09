@@ -1,7 +1,7 @@
 class CreateRepositories < ActiveRecord::Migration
   def change
     create_table :repositories do |t|
-      t.integer :account_id
+      t.integer :github_repository_id, null: false
       t.integer :language_id
       t.string :name, null: false
       t.string :full_name, null: false
@@ -13,6 +13,7 @@ class CreateRepositories < ActiveRecord::Migration
       t.boolean :fork
       t.datetime :first_created, null: false
       t.datetime :last_updated, null: false
+      t.datetime :first_commited_at
       t.datetime :pushed_at
       t.integer :forks_count
 
