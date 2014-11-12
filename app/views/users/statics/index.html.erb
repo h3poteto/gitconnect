@@ -1,1 +1,30 @@
-<h1>Dashboard</h1>
+<div class="users-header">
+  <div class="container">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><%=link_to "News", "#", data: { target: "news_area" }, class: "feed-menu" %></li>
+      <li><%= link_to "Languages", "#", data: { target: "languages_area"}, class: "feed-menu" %></li>
+      <li><%= link_to "Frameworks", "#", data: { target: "frameworks_area"}, class: "feed-menu" %></li>
+      <li><%= link_to "Companies", "#", data: { target: "companies_area"}, class: "feed-menu" %></li>
+    </ul>
+  </div>
+</div>
+
+<div class="main-area">
+  <div class="content-area">
+    <%= render 'users/statics/news' %>
+    <%= render 'users/statics/languages' %>
+    <%= render 'users/statics/frameworks' %>
+    <%= render 'users/statics/companies' %>
+  </div>
+  <div class="sidebar-nav fixed-sidebar">
+    <h3>Sidebar</h3>
+    <ul class="nav nav-list">
+      <li class="nav-header"></li>
+      <li>
+        <%= link_to "#" do %>
+        Message <span class="badge">4</span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

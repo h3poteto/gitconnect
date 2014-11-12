@@ -1,3 +1,43 @@
-// Place all the styles related to the Users::Statics controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body[data-controller="users/statics"] {
+  .users-header {
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    ul {
+      li {
+        font-size: 18px;
+        a {
+          color: rgb(69, 130, 236);
+          padding: 15px 18px 15px 18px;
+        }
+      }
+      .active {
+        border-bottom: 2px solid rgb(233, 144, 2);
+      }
+    }
+  }
+  .main-area {
+    max-width: 1140px;
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+    .fixed-sidebar {
+      position: absolute;
+      left: auto;
+      top: 0px;
+      right: 0;
+      float: right;
+      width: 150px;
+    }
+
+    .content-area {
+      margin: 30px auto;
+      width: 400px;
+    }
+  }
+
+  #companies_area, #languages_area, #frameworks_area {
+    display: none;
+  }
+
+}

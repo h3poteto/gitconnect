@@ -1,0 +1,10 @@
+<div id="companies_area">
+  <% @clients.each do |client| %>
+    <% if client.account.present? %>
+      <div class="panel panel-default">
+        <div class="panel-heading"><%= client.account.name %></div>
+        <div class="panel-body">update repositories</div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

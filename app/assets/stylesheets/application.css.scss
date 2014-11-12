@@ -9,15 +9,40 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *
-*/
+ */
 
 @import "bootswatch/yeti/variables";
 @import "bootstrap";
 @import "bootswatch/yeti/bootswatch";
-@import "./users/*";
 @import "sprockets-octicons";
 
-.navbar {
-  margin-bottom: 0;
+.top-ground {
+  background: image-url("bg1.jpg") no-repeat;
+  background-size: 100% auto;
+  width: 100%;
+  margin-top: -22px;
+  height: 400px;
+  color: rgb(255,255,255);
+  .top-inner {
+    margin: 0 auto;
+    max-width: 1140px;
+    width: auto;
+
+    .top-center-description {
+      margin: 100px auto 80px auto;
+      text-align: center;
+    }
+    .top-center-buttons {
+      text-align: center;
+    }
+  }
+}
+.description-ground {
+  .description-inner {
+    margin: 0 auto;
+    max-width: 1140px;
+    width: auto;
+    min-height: 200px;
+    height: auto;
+  }
 }

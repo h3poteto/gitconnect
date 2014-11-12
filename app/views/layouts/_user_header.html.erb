@@ -1,11 +1,26 @@
 <div class="navbar navbar-default navbar-static-top">
   <div class="container">
-    <%= link_to "Gitconnect", users_statics_path, class: "navbar-brand" %>
-    <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <div class="navbar-header">
+      <%= link_to "gitconnect", users_statics_path, class: "navbar-brand" %>
+    </div>
+    <div id="navbar-main" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to "会社検索", search_users_clients_path  %></li>
-        <li><%= link_to "Link2", "/path2"  %></li>
-        <li><%#= link_to "設定", edit_clients_setting_path(current_client)  %></li>
+        <li><%= link_to "Search", search_users_clients_path  %></li>
+        <li><%= link_to "Help", "#"  %></li>
+        <li class="dropbown">
+          <%= link_to "#", id: "settings", class: "dropdown-toggle", "data-toggle" => "dropdown" do %>
+            Settings
+            <span class="caret"></span>
+          <% end %>
+          <ul class="dropdown-menu" aria-labelledby="settings">
+            <li>
+              <%= link_to "dummy", "#" %>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Logout", destroy_client_session_path, method: :delete %></li>
       </ul>
     </div>
   </div>

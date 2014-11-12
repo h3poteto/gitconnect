@@ -1,5 +1,19 @@
-<h1>GitConnect</h1>
+<div class="top-ground">
+  <div class="top-inner">
+    <h2>gitconnect</h2>
 
-<%= link_to account_omniauth_authorize_path(:github) do %>
-  <span class="octicon octicon-mark-github btn btn-success"> Sign in with github</span>
-<% end %>
+    <div class="top-center-description">
+      <h3>description</h3>
+    </div>
+    <div class="top-center-buttons">
+      <%= link_to account_omniauth_authorize_path(:github) do %>
+        <span class="octicon octicon-mark-github btn btn-primary"> Sign in with github</span>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="description-ground">
+  <div class="description-inner">
+    <h3>detail description</h3>
+  </div>
+</div>

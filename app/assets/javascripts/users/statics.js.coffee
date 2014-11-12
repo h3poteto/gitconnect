@@ -1,3 +1,15 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+class @UsersStaticsController
+  index: ->
+    $(".feed-menu").click ()->
+      $this = $(@)
+      target = $this.data("target")
+      $(".content-area").children().each (e,v)->
+        if $(v).attr("id") == target
+          $(v).show()
+          $(".active").each (k,j)->
+            $(j).removeClass("active")
+          $this.addClass("active")
+        else
+          $(v).hide()
+
+      return false
