@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009085729) do
+ActiveRecord::Schema.define(version: 20141226101031) do
+
+  create_table "account_languages", force: true do |t|
+    t.integer  "account_id"
+    t.integer  "language_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "account_repositories", force: true do |t|
     t.integer  "account_id"

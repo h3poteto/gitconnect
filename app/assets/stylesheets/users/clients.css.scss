@@ -1,0 +1,43 @@
+body[data-controller="users/clients"][data-action="search"] {
+  .main-area {
+    max-width: 1140px;
+    width: auto;
+    margin: 30px auto;
+    position: relative;
+
+    .search-area {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .result-group {
+      $item-width: 300px;
+      $item-height: 400px;
+      $name-height: 200px;
+      .first-group {
+        width: $item-width;
+        height: $item-height;
+        background-color: #f0f0f0;
+        border: 1px solid #dcdcdc;
+        .name-area {
+          padding: 40px;
+          height: $name-height;
+          text-align: center;
+          font-size: 20px;
+          font-wieght: bold;
+          .client-image {
+            display: block;
+            margin-bottom: 10px;
+          }
+        }
+        .detail-area {
+          text-align: left;
+          padding: 20px;
+          background: #333333;
+          color: #ffffff;
+          height: $item-height - $name-height;
+        }
+      }
+    }
+  }
+
+}

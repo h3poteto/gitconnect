@@ -13,17 +13,14 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "users", :media => "all" %>
-
+    <%= javascript_include_tag "users" %>
   </head>
   <body data-controller="<%= params[:controller] %>" data-action="<%= params[:action] %>">
 
     <%= render "layouts/user_header" %>
     <%= yield %>
 
-    <footer>
-      <p>&copy; Company 2014</p>
-    </footer>
+    <%= render "layouts/user_footer" %>
 
-    <%= javascript_include_tag "users" %>
   </body>
 </html>

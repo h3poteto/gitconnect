@@ -15,9 +15,17 @@
 @import "bootswatch/yeti/variables";
 @import "bootstrap";
 @import "bootswatch/yeti/bootswatch";
-@import "./users/*";
+@import "./users/*.scss";
 @import "sprockets-octicons";
 
 .navbar {
   margin-bottom: 0;
+}
+
+
+footer {
+  text-align: center;
+  padding: 50px 0;
+  border-top: 1px solid #dcdcdc;
+  color: #a0a0a0;
 }
