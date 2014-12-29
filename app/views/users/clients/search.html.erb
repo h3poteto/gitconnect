@@ -17,9 +17,17 @@
           <%= link_to client1.account.name, users_client_path(client1) %>
         </div>
         <div class="detail-area">
-          <% client1.account.languages.each do |language| %>
-            <%= language.name %>
-          <% end %>
+          <table class="languages">
+            <% client1.account.languages.each_slice(5) do |l1, l2, l3, l4, l5| %>
+              <tr>
+                <td><%= l1.name if l1.present? %></td>
+                <td><%= l2.name if l2.present? %></td>
+                <td><%= l3.name if l3.present? %></td>
+                <td><%= l4.name if l4.present? %></td>
+                <td><%= l5.name if l5.present? %></td>
+              </tr>
+            <% end %>
+          </table>
         </div>
       </div>
       <div class="second-group">

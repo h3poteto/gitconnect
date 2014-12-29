@@ -35,6 +35,12 @@ body[data-controller="users/clients"][data-action="search"] {
           background: #333333;
           color: #ffffff;
           height: $item-height - $name-height;
+	  .languages {
+	    td {
+	      width: 50px;
+	      text-align: center;
+	    }
+	  }
         }
       }
     }
