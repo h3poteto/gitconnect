@@ -14,6 +14,15 @@ class ApplicationController < ActionController::Base
     end
   end
   def after_sign_out_path_for(resource)
-    root_path
+    case resource
+    when :account
+      root_path
+    when :client
+      new_client_session_path
+    when :admin
+      new_admin_session_path
+    else
+      root_path
+    end
   end
 end

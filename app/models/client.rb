@@ -1,5 +1,5 @@
 class Client < ActiveRecord::Base
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :account
