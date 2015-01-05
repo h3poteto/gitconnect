@@ -79,7 +79,6 @@ class Account < ActiveRecord::Base
           first = application.list_commits(repo.full_name, page: page).last rescue nil
         end
         repository.update(first_commited_at: first_commit.commit.committer.date)
-        account.languages << repository.language if repository.language.present? && !account.languages.include?(repository.language)
       else
         ## collaboratorとして追加されていたらaccountと紐付け
         repository.accounts << account unless repository.accounts.include?(account)
@@ -97,6 +96,7 @@ class Account < ActiveRecord::Base
           forks_count: repo.forks_count
           )
       end
+      account.languages << repository.language if repository.language.present? && !account.languages.include?(repository.language)
     end
   end
 
